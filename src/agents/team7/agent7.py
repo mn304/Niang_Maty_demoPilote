@@ -11,7 +11,7 @@ class Agent7(KartAgent):
         self.agent_positions = []
         self.obs = None
         self.isEnd = False
-        self.name = "Team7" # replace with your chosen name
+        self.name = "Niang_maty" # changement de mon nom  sur le kart  
 
     def reset(self):
         self.obs, _ = self.env.reset()
@@ -24,12 +24,16 @@ class Agent7(KartAgent):
         acceleration = random.random()
         steering = random.random()
         action = {
-            "acceleration": acceleration,
-            "steer": steering,
+            "acceleration": 1.0,# on accelere au maximum
+            "steer": 0.0, #on avance tout au droit 
             "brake": False, # bool(random.getrandbits(1)),
             "drift": bool(random.getrandbits(1)),
             "nitro": bool(random.getrandbits(1)),
-            "rescue":bool(random.getrandbits(1)),
+            "rescue":bool(random.getrandbits(1)), 
             "fire": bool(random.getrandbits(1)),
         }
         return action
+    
+
+
+    

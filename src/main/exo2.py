@@ -15,17 +15,14 @@ from dataclasses import dataclass
 # Append the "src" folder to sys.path.
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../..", "src")))
 
-from agents.team1.agent1 import Agent1
-from agents.team2.agent2 import Agent2
-from agents.team3.agent3 import Agent3
-from agents.team4.agent4 import Agent4
-from agents.team5.agent5 import Agent5
-from agents.team6.agent6 import Agent6
+# On ne garde que l'import de l'Agent 7
 from agents.team7.agent7 import Agent7
+
 from pystk2_gymnasium.envs import STKRaceMultiEnv, AgentSpec
 from pystk2_gymnasium.definitions import CameraMode
 
-MAX_TEAMS = 7
+
+MAX_TEAMS = 1 
 MAX_STEPS = 1000
 NB_RACES = 1
 
@@ -71,11 +68,11 @@ class Scores:
 default_action = {
             "acceleration": 0.0,
             "steer": 0.0,
-            "brake": False, # bool(random.getrandbits(1)),
-            "drift": False, # bool(random.getrandbits(1)),
-            "nitro": False, # bool(random.getrandbits(1)),
-            "rescue":False, # bool(random.getrandbits(1)),
-            "fire": False, # bool(random.getrandbits(1)),
+            "brake": False, 
+            "drift": False, 
+            "nitro": False, 
+            "rescue":False, 
+            "fire": False, 
         }
 
 
@@ -96,19 +93,11 @@ def create_race():
     else:
         env = STKRaceMultiEnv(agents=agents_specs, render_mode="human", num_kart=MAX_TEAMS)
 
-    # Instantiate the agents.
-
     agents = []
     names = []
 
-    agents.append(Agent1(env, path_lookahead=3))
-    agents.append(Agent2(env, path_lookahead=3))
-    agents.append(Agent3(env, path_lookahead=3))
-    agents.append(Agent4(env, path_lookahead=3))
-    agents.append(Agent5(env, path_lookahead=3))
-    agents.append(Agent6(env, path_lookahead=3))
+    #que l'agent 7
     agents.append(Agent7(env, path_lookahead=3))
-    np.random.shuffle(agents)
 
     for i in range(MAX_TEAMS):
         names.append(agents[i].name)
@@ -152,7 +141,10 @@ def single_race(env, agents, names, scores):
             pos[i] = info['infos'][str]['position']
             dist[i] = info['infos'][str]['distance']
         steps = steps + 1
-        done = (nb_finished == 5)
+        
+       
+        done = (nb_finished == 1)
+        
         positions.append(pos)
         distances.append(dist)
     pos_avg = np.array(positions).mean(axis=0)
