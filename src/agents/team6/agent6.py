@@ -12,11 +12,20 @@ class Agent6(KartAgent):
         self.agent_positions = []
         self.obs = None
         self.isEnd = False
-        self.name = "Team6" # replace with your chosen name
+        self.name = "niang_maty" # changment du nom du kart a mon nom et prenom 
 
     def reset(self):
         self.obs, _ = self.env.reset()
         self.agent_positions = []
+
+    #ma fonction pour faire un tour complet 
+    
+    
+
+
+
+
+
 
     def endOfTrack(self):
         return self.isEnd
@@ -25,10 +34,10 @@ class Agent6(KartAgent):
         acceleration = random.random()
         steering = random.random()
         action = {
-            "acceleration": acceleration,
-            "steer": steering,
-            "brake": False, # bool(random.getrandbits(1)),
-            "drift": bool(random.getrandbits(1)),
+            "acceleration": 0.2, #je met l'acceleration a 0,2 pour quon est le tour complet sans foncer au mur
+            "steer": 0.9, #le volant a 0,9 pour qu'il tourne le volant le plus a gauche 
+            "brake": True , 
+            "drift": False,
             "nitro": bool(random.getrandbits(1)),
             "rescue":bool(random.getrandbits(1)),
             "fire": bool(random.getrandbits(1)),
