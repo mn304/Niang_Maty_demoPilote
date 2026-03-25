@@ -1,0 +1,18 @@
+1. Le principe du marche en arriere 
+Après avoir effectué un demi-tour à 180 degrés,
+l'avant de mon véhicule pointe dans la direction opposée
+au sens normal de la piste. Pour continuer à avancer sur le circuit,
+on applique  une commande de freinage continue (brake = True et acceleration = 0.0),
+ce qui active la marche arrière dans  du jeu.
+
+2. La logique de direction (Steering)
+
+En marche avant, braquer à droite tourne l'avant du kart vers la droite.
+ En marche arrière, les roues directrices étant toujours à l'avant, braquer
+à droite va déporter l'avant du véhicule vers la gauche, ce qui entraîne le nez du kart à l'opposé,
+ et pousse l'arrière  vers la droite.
+
+3. L'adaptation de l'algorithme
+Pour que l'agent suive la piste :
+
+    

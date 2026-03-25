@@ -19,7 +19,7 @@ class Agent1(KartAgent):
         self.agent_positions = []
         self.obs = None
         self.isEnd = False
-        self.name = "Tasty Crousteam"
+        self.name = "agant1"
 
         path_conf = Path(__file__).resolve().parent
         path_conf = str(path_conf) + '/ConfigFileTeam1.yaml'   #Chemin du fichier de configuration
@@ -40,4 +40,38 @@ class Agent1(KartAgent):
         return self.isEnd
 
     def choose_action(self, obs):
-        return self.agentItems.choose_action(obs)
+    
+        self.compteur_pas += 1
+        # On braque à fond avec l'accélérateur et le drift pour pivoter
+        if self.compteur_pas <= 50:
+            return {
+                "acceleration": 1.0,
+                "steer": 1.0,         # Braque à droite toute
+                "brake": False,
+                "drift": True,        # Drift pour tourner sur place
+                "nitro": False,
+                "rescue": False,
+                "fire": False
+            }
+        else:
+            
+            direction = 0.0 
+
+            return {
+                "acceleration": 0.0,  
+                "steer": direction,   
+                "brake": True,        
+                "drift": False,
+                "nitro": False,
+                "rescue": False,
+                "fire": False
+            }
+
+    
+
+
+
+
+    
+
+    
