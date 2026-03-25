@@ -111,7 +111,7 @@ def create_race():
     np.random.shuffle(agents)
 
     for i in range(MAX_TEAMS):
-        names.append(agents[6].name)
+        names.append(agents[i].name)
         agents_specs[i].name = agents[i].name
         agents_specs[i].kart = agents[i].name
     return env, agents, names
